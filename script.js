@@ -63,15 +63,15 @@ const personalMovieDB = {
 // }
 
 if (personalMovieDB.count < 10) {
-    console.log("Просмотрено довольно мало фильмов");
+    alert("Просмотрено довольно мало фильмов");
 
 } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-    console.log("Вы классический зритель");
+    alert("Вы классический зритель");
 
 } else if (personalMovieDB.count >= 30) {
-    console.log("Вы киноман");
+    alert("Вы киноман");
 } else {
-    console.log("Произошла ошибка");
+    alert("Произошла ошибка");
 }
 
 console.log(personalMovieDB);
