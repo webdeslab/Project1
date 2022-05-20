@@ -75,3 +75,16 @@ if (personalMovieDB.count < 10) {
 }
 
 console.log(personalMovieDB);
+
+// for (let i = 1; 1 < 6; i++) {
+//     if (i == 6) {
+//         break;
+//     }
+//     console.log(i);
+// }
+
+// let num = 8;
+// while (num) {
+//     console.log(num);
+//     num--;
+// }
