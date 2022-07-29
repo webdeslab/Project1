@@ -139,9 +139,116 @@
 //     console.log(i);
 // }
 
-let i = 0;
+// let i = 0;
 
-while (i < 3) {
-    console.log(`number ${i}!`);
-    i++;
-  }
+// while (i < 3) {
+//     console.log(`number ${i}!`);
+//     i++;
+//   }
+
+function calculateVolumeAndArea(length) {
+    if (typeof(length) !== 'number' || length < 0 || !Number.isInteger(length)) {
+        return 'При вычислении произошла ошибка!';
+    }
+    let volume = 0,
+        area = 0;
+
+    volume = length * length * length;
+
+    area = 6 * (length * length);
+
+    return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
+}
+
+console.log(calculateVolumeAndArea(5));
+
+function getCoupeNumber(seatNumber) {
+    if (typeof(seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
+        return "Ошибка. Проверьте правильность введенного номера места";
+    } else if (seatNumber === 0 || seatNumber > 36) {
+        return "Таких мест в вагоне не существует";
+    }
+    for (let i = 4; i <= 36; i = i + 4) {
+        if (seatNumber <= i) {
+            return Math.ceil(i / 4);
+        }
+    }
+
+}
+
+getCoupeNumber(33);
+
+function getTimeFromMinutes(localTime) {
+    if (typeof(localTime) !== 'number' || localTime < 0 || !Number.isInteger(localTime)) {
+        return "Ошибка, проверьте данные";
+    }
+
+        let time = Math.floor(localTime / 60);
+        let minute = localTime % 60;
+
+        let hoursStr = '';
+
+    switch (time) {
+        case 0: 
+            hoursStr = 'часов';
+            break;
+        case 1:
+            hoursStr = 'час';
+            break;
+        case 2:
+        case 3:
+        case 4:
+            hoursStr = 'часа';
+            break;
+        default:
+            hoursStr = 'часов';
+    }
+
+        return `"Это ${time} ${hoursStr} и ${minute} минут"`;
+        
+
+}
+
+console.log(getTimeFromMinutes(200));
+
+function findMaxNumber(a,b,c,d) {
+    if (typeof(a) !== 'number') {
+        return 0;
+    }else if (typeof(b) !== 'number') {
+        return 0;
+    }else if (typeof(c) !== 'number') {
+        return 0;
+    }else if (typeof(d) !== 'number') {
+        return 0;
+    }
+
+    return Math.max(a,b,c,d);
+}
+
+console.log(findMaxNumber(1,3,5,6));
+
+function fib(num) {
+    if (typeof(num) !== 'number' || num < 0 || !Number.isInteger(num)) {
+        return '';
+    }
+
+    let res = '';
+    let first = 0;
+    let second = 1;
+
+    for(let i = 0; i < num; i++) {
+        if(i + 1 == num) {
+            res += `${first}`;
+        }else {
+            res += `${first} `;
+        }
+
+        let third = first + second;
+        first = second;
+        second = third;
+    }
+
+    return res;
+}
+
+console.log(fib(10));
