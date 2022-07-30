@@ -252,3 +252,40 @@ function fib(num) {
 }
 
 console.log(fib(10));
+
+function learnJs (lang, callback) {
+    console.log(`Я изучаю ${lang}!`);
+    callback();
+}
+
+function good () {
+    console.log('И это круто!');
+}
+
+learnJs('JavaScript', good);
+
+
+function myBaby (baby, callback) {
+    console.log(`У меня родится ${baby}!`);
+    callback();
+}
+
+function thisIsGood () {
+    console.log('Я безумно рад и счастлив этому!!');
+}
+
+myBaby('Дочь', thisIsGood);
+
+
+const styles = {
+    width: 1024,
+    height: 768,
+    bgColor: '#fff',
+    options: {
+        border: '#000',
+        boxShadow:'#000',
+        fontSize: 50
+    }
+};
+
+console.log(Object.keys().length);
