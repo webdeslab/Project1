@@ -375,21 +375,92 @@
 
 // console.log(reverseString(someString));
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
 
-function availableCurr(arr, missingCurr) {
-    let str = '';
+// function availableCurr(arr, missingCurr) {
+//     let str = '';
 
-    arr.length !== 0 ? str = 'Нет доступных валют' : str = 'Доступные валюты:\n';
+//     arr.length !== 0 ? str = 'Нет доступных валют' : str = 'Доступные валюты:\n';
 
-    arr.forEach(function(curr) {
-        if (curr !== missingCurr) {
-            str += `${curr}\n`;
+//     arr.forEach(function(curr) {
+//         if (curr !== missingCurr) {
+//             str += `${curr}\n`;
+//         }
+//     });
+
+//     return str;
+// }
+
+// console.log(availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'));
+
+const personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+    start: function () {
+        personalMovieDB.count = +prompt ('Сколько фильмов вы уже посмотрели?', '');
+
+        while (personalMovieDB.count == '' || personalMovieDB.count == 0 || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt ('Сколько фильмов вы уже посмотрели?', '');
         }
-    });
+    },
+    rememberMyFilms: function () {
+    for (let i = 0; i < 2; i++) {
+    const a = prompt ('один из последних просмотренных фильмов?', ''),
+          b = prompt ('На сколько оцените его?', '');
+                  
+            if (a !== null && b !== null && a !== '' && b !== '' && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+                console.log('done');
+            }else {
+                console.log('error');
+                i--;
+            }
 
-    return str;
-}
+        }
+    },
+    detectPersonalLevel: function () {
+        if (personalMovieDB.count < 10) {
+            console.log('Просмотрено довольно много фильмов');
+        }else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+            console.log('Вы классический зритель');
+        }else if (personalMovieDB.count >= 30) {
+            console.log('Вы киноман');
+        }else {
+            console.log('Произошла ошибка');
+        }
+    },
+    showMyDb: function (hiden) {
+        if (!hiden) {
+            console.log(personalMovieDB);
+        }
+    },
+    toggleVisibleMyDb: function () {
+        if (personalMovieDB.privat) {
 
-console.log(availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'));
+            personalMovieDB.privat = false;
+        }else {
+            personalMovieDB.privat = true;
+        }
+    },
+    writeYourGenres: function () {
+        for (let i = 1; i < 2; i++) {
+            let genre = prompt(`Ваш любимый жанр под номером ${i}`).toLowerCase();
+
+            if (genre === ' || genre === null') {
+                console.log('Вы ввели некорректные данные или не ввели их вовсе');
+                i--;
+            }else {
+                personalMovieDB.genres = genre.split(', ');
+                personalMovieDB.genres.sort();
+
+            }
+        }
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр: ${i + 1} - это ${item}`);
+        });
+    }
+};
